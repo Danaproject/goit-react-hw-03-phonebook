@@ -51,7 +51,7 @@ class ContactForm extends Component {
           required
           />
         </label>
-        <button type="submit" className="ContactForm__button">
+        <button type="submit" className="ContactForm__button" aria-label="Add contact">
           Add contact
         </button>
       </form>

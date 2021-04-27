@@ -8,6 +8,7 @@ const ContactItem = ({ contacts, onDeleteContact }) => (
       <button
         type="button"
         className="ContactList__btn"
+        aria-label="Delete"
         onClick={() => onDeleteContact(id)}>
         &#128465;
     </button>

@@ -32,6 +32,26 @@ class App extends Component {
   //   }
   // }
 
+  componentDidMount() {
+
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+
+    const nextContacts = this.state.contacts;
+    const prevContacts = prevState.contacts;
+
+    if (nextContacts !== prevContacts) {
+      localStorage.setItem('contacts', JSON.stringify(nextContacts));
+    }
+  }
+
   ifContactExists = (name) => {
     return this.state.contacts.some(contact => contact.name === name)
   }
@@ -81,7 +101,7 @@ class App extends Component {
     return (
       <Container>
         <Panel>
-        <h1>Phonebook</h1>
+          <h1>Phonebook</h1>
           <ContactForm onSubmit={this.addContact} />
         </Panel>
         <Panel>
